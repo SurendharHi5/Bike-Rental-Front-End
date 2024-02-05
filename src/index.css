@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,500&family=Protest+Revolution&display=swap');
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(238, 237, 235);
+  height: 100vh;
+}
+
+.bs1 {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+h1{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header{
+  padding: 10px;
+}
+
+.content{
+  min-height: 90vh;
+
+}
+
+.Hbike{
+  height: 250px;
+  margin-top: 50px;
+  overflow: hidden;
+}
+
+.bikeContent{
+  position: absolute;
+  border-radius: 4px;
+  text-align: left;
+  bottom: 0;
+  height: 40px;
+  width: 320px;
+  background: rgba(12, 12, 12, 0.8);
+  color: white;
+  padding: 10px;
+  transition: .3s;
+}
+
+.cHid{
+  visibility: hidden;
+  opacity: 0;
+}
+
+.bikeimg{
+  height: 300px;
+  transition: .3s;
+}
+
+.Hbike:hover{
+  cursor: pointer;
+}
+
+.Hbike:hover .bikeContent{
+  height: 100px;
+  background: rgba(12, 12, 12, 0.9);
+}
+
+.Hbike:hover .cHid{
+  opacity: 1;
+  visibility: visible;
+}
+
+.Hbike:hover .bikeimg{
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.bookLink{
+  text-decoration: none;
+}
+
+.form{
+  background-color: #dee0e6;
+  
+}
+
+.addForm{
+  background-color: #dee0e6;
+  margin-top: 50px !important;
+}
+
+.fbtn{
+  padding: 5px 25px;
+}
+
+.link{
+  text-decoration: none;
+  
+}
+
+.imggif{
+  margin-top: 80px !important;
+}
+
+.logForm{
+  margin-top: 50px !important;
+}
+
+@media (max-width:765px) {
+  .form{
+    margin: 100px !important ;
+  }
+  
+}
+
+.a{
+  text-decoration: none;
+}
+
+.bookImg{
+  width: 90%;
+  border-radius: 5px;
+}
+
+.bookDet{
+  text-align: left;
+  margin-left: 50px;
+}
+
+.bookInfo {
+  background-color: rgb(238, 237, 235);
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.date{
+  background-color: rgb(224, 224, 222);
+}
+
+@media (max-width:767px) {
+  .bookingPage{
+    margin: 50px !important ;
+  }
+  .bookInfo{
+    margin: 50px !important
+  }
+}
+
+.total{
+  margin-top: 20px;
+}
+
+.pickupLoc{
+  margin-top: 10px;
+}
+
+.rideBtn{
+  height: 50px;
+  border-radius: 0px 4px 4px 0px;
+  
+}
+
+.date{
+  font-weight:bold;
+  text-align: center;
+ 
+}
+
+.stImg{
+  height: 550px;
+  background-position: center;
+}
+
+.editIcon{
+  font-size: 30px;
+  color: greenyellow;
+  margin-left: 70px;
+}
+
+.deleteIcon{
+  font-size: 30px;
+  color: red;
+  padding-left:20px ;
+}
+
+.addBike{
+  margin-right: 25px;
+}
+
+.backBtn{
+  margin-left: 25px;
+}
+
+.bookText{
+  text-align: left;
+}
+
+/* .bikeLogo{
+  height: 60px;
+  margin-left: 0px;
+}
+
+.defaultName{
+  margin-right: 900px;
+} */
+
+.kickBike{
+  /* font-family: 'Nunito Sans', sans-serif;
+font-family: 'Protest Revolution', sans-serif; */
+color: black;
+}
