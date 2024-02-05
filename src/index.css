@@ -107,7 +107,7 @@ h1{
 
 @media (max-width:765px) {
   .form{
-    margin: 100px !important ;
+    margin: 50px !important ;
   }
   
 }
@@ -123,7 +123,7 @@ h1{
 
 .bookDet{
   text-align: left;
-  margin-left: 50px;
+  margin-left: 20px;
 }
 
 .bookInfo {
@@ -140,9 +140,9 @@ h1{
   .bookingPage{
     margin: 50px !important ;
   }
-  .bookInfo{
+  /* .bookInfo{
     margin: 50px !important
-  }
+  } */
 }
 
 .total{

@@ -28,7 +28,7 @@ function Register() {
           <img data-aos="slide-left" data-aos-duration="800" src='https://giffiles.alphacoders.com/174/17469.gif' />
         </Col>
         <Col lg={8} md={8} className='textLeft mt-4'>
-          <Form layout='vertical' className='form p-5 mb-3'onFinish={onFinish}>
+          <Form layout='vertical' className='form p-5 mb-3 mt-4'onFinish={onFinish}>
             <h1>Register</h1>
             <hr />
             <Form.Item name="username" label="User Name" >
