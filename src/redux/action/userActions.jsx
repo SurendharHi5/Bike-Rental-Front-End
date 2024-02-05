@@ -6,7 +6,7 @@ export const userLogin = (reqObj)=>async dispatch=>{
     dispatch({type: "LOADING", payload: true})
 
     try {
-        const response = await axios.post("http://localhost:3000/api/users/login", reqObj)
+        const response = await axios.post("https://bike-rental-back-end.onrender.com/api/users/login", reqObj)
         localStorage.setItem("user", JSON.stringify(response.data))
         dispatch({type: "LOADING", payload: false})
         message.success("Login Successfull")
@@ -25,7 +25,7 @@ export const userRegister = (reqObj)=>async dispatch=>{
     dispatch({type: "LOADING", payload: true})
 
     try {
-        const response = await axios.post("http://localhost:3000/api/users/register", reqObj)
+        const response = await axios.post("https://bike-rental-back-end.onrender.com/api/users/register", reqObj)
         dispatch({type: "LOADING", payload: false})
         message.success("Registration Successfull")
         setTimeout(()=>{

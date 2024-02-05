@@ -6,7 +6,7 @@ export const getAllBikes = ()=>async dispatch =>{
     dispatch({type: "LOADING", payload: true})
 
     try {
-        const response = await axios.get("http://localhost:3000/api/bikes/getallbikes")
+        const response = await axios.get("https://bike-rental-back-end.onrender.com/api/bikes/getallbikes")
         dispatch({type: "GET_ALL_BIKES", payload: response.data})
         dispatch({type: "LOADING", payload: false})
     } catch (error) {
@@ -19,7 +19,7 @@ export const addBike = (reqObj) => async dispatch =>{
 
     dispatch({type: "LOADING", payload: true})
     try {
-        await axios.post("http://localhost:3000/api/bikes/addbike", reqObj)
+        await axios.post("https://bike-rental-back-end.onrender.com/api/bikes/addbike", reqObj)
         dispatch({type: "LOADING", payload: false})
         message.success("New Bike added successfully")
         setTimeout(()=>{
@@ -35,7 +35,7 @@ export const editBike = (reqObj) => async dispatch =>{
 
     dispatch({type: "LOADING", payload: true})
     try {
-        await axios.post("http://localhost:3000/api/bikes/editbike", reqObj)
+        await axios.post("https://bike-rental-back-end.onrender.com/api/bikes/editbike", reqObj)
         dispatch({type: "LOADING", payload: false})
         message.success("Updated successfully")
         setTimeout(()=>{
@@ -51,7 +51,7 @@ export const deleteBike = (reqObj) => async dispatch =>{
 
     dispatch({type: "LOADING", payload: true})
     try {
-        await axios.post("http://localhost:3000/api/bikes/deletebike", reqObj)
+        await axios.post("https://bike-rental-back-end.onrender.com/api/bikes/deletebike", reqObj)
         dispatch({type: "LOADING", payload: false})
         message.success("Deleted successfully")
         setTimeout(()=>{

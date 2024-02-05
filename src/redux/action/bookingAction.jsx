@@ -6,7 +6,7 @@ export const bookingBike = (reqObj)=> async (dispatch) =>{
     dispatch({type: "LOADING", payload: true})
 
     try {
-        await axios.post("http://localhost:3000/api/bookings/bookingbike", reqObj)
+        await axios.post("https://bike-rental-back-end.onrender.com/api/bookings/bookingbike", reqObj)
         
         dispatch({type: "LOADING", payload: false})
         message.success("Booking Successfull")
@@ -27,7 +27,7 @@ export const getAllBookings = ()=>async dispatch =>{
     dispatch({type: "LOADING", payload: true})
 
     try {
-        const response = await axios.get("http://localhost:3000/api/bookings/getallbookings")
+        const response = await axios.get("https://bike-rental-back-end.onrender.com/api/bookings/getallbookings")
         dispatch({type: "GET_ALL_BOOKINGS", payload: response.data})
         dispatch({type: "LOADING", payload: false})
     } catch (error) {
