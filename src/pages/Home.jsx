@@ -53,20 +53,7 @@ function Home() {
                           </div>
                           
                       </div>
-
-                      {/* <Card className='bike p-2 bs1' >
-                          <Card.Img  src={bike.image} className='bikeimg'  />
-                          <Card.Body className='bikeContent'>
-                            <div>
-                            <Card.Title>{bike.name}</Card.Title>
-                            </div>
-                            <Card.Text>
-                            {bike.rentPerHour} Rent Per Hour /-
-                            </Card.Text>
-                            <Button variant="primary" className='bt1 mt-3'>Book Now</Button>
-                          </Card.Body>
-                        </Card> */}
-
+                      
                   </Col>
         })}
       </Row>

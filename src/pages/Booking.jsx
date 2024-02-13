@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Default from '../components/Default'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBikes } from '../redux/action/bikesAction'
-import { bookingBike } from '../redux/action/bookingAction'
 import { useParams } from 'react-router-dom'
 import { Col, Row, DatePicker, Button, Modal} from 'antd'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import StripeCheckout from 'react-stripe-checkout';
 import Spinner from '../Spinner';
-
-
+import axios from 'axios'
 
 AOS.init();
 const { RangePicker } = DatePicker;
@@ -40,9 +37,8 @@ function Booking() {
     }
   }, [bikes])
 
-  function onToken(token){
-    const reqObj = {
-      token,
+
+  const reqObj = {
       user : JSON.parse(localStorage.getItem("user"))._id,
       userName : JSON.parse(localStorage.getItem("user")).username,
       bike : bike._id,
@@ -55,10 +51,59 @@ function Booking() {
         to
       }
     }
-     dispatch(bookingBike(reqObj))
-    
-  }
 
+  async function displayRazorpay() {
+
+    // creating a new order
+    const result = await axios.post("https://bike-rental-back-end.onrender.com/api/bookings/bookingbike", reqObj);
+
+    
+
+    if (!result) {
+        alert("Server error. Are you online?");
+        return;
+    }
+
+    // Getting the order details back
+    const {  id: order_id } = result.data;
+    const amount = totalAmount * 100;
+  
+    const options = {
+        key: "rzp_test_9j7QX4EPSwZr5G", 
+        amount,
+        currency: "INR",
+        name: "KickBike Rental",
+        description: "Test Transaction",
+        order_id: order_id,
+        handler: async function (response) {
+            const data = {
+                orderCreationId: order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpaySignature: response.razorpay_signature,
+            };
+
+            const result = await axios.post("https://bike-rental-back-end.onrender.com/api/bookings/success", {data : data});
+
+            alert(result.data.msg);
+            if(result){
+              setTimeout(()=>{
+                 window.location.href="/mybookings"
+             })
+         }
+        },
+        notes: {
+            address: "KickBike Rental",
+        },
+        theme: {
+            color: "#61dafb",
+        },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+ 
+}
 
   function changeDate(e){
     setFrom((e[0]).format("MMM-DD-YYYY HH:mm a"))
@@ -109,15 +154,11 @@ function Booking() {
                 <h6>Total Days : {totalDays}</h6>
                   <h6>Total Hours : {totalHours}</h6>
                   <h4>Total Amount: {totalAmount}</h4>
-                  <StripeCheckout shippingAddress token={onToken} amount={totalAmount * 100} currency='INR' stripeKey="pk_test_51Ock7jSImwwi9NTckXsYX9BfBELyesPmkQriiJb3niJrXynKJhth3gb6d941iH2Zi2ukCdfqS27PIhA9SD8uSj1M00tC5fqeY4">
-                  <Button type="primary" htmlType="submit" className='fbtn' >Book Now</Button>
-                  </StripeCheckout>
-                  
+
+                  <Button type="primary" htmlType="submit" className='fbtn' onClick={displayRazorpay}>Book Now</Button>
+
                 </div>)}
                
-               
-                
-                
             </div>
           </div>
         </Col>
@@ -140,7 +181,6 @@ function Booking() {
         )}
       </Row>
 
-   
     </Default>
   )
 }
